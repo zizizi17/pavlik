@@ -1,0 +1,21 @@
+.login {
+    background: url('/app/bg.jpg') 50% 50% no-repeat;
+    background-size: cover;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    .login__form {
+        width: 350px;
+        padding: 20px;
+        border: 1px solid 1px;
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, .5);
+        .error_message {
+            margin-top: 15px;
+            margin-bottom: 0 !important;
+        }
+    }
+}

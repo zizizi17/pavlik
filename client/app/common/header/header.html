@@ -1,0 +1,30 @@
+<div class="navbar">
+    <div>
+        <a
+            class="tab"
+            ui-sref="clients"
+            ng-class="{active: vm.$state.includes('clients')}">
+            Clients
+        </a>
+        <a
+            class="tab"
+            ui-sref="numbers"
+            ng-class="{active: vm.$state.includes('numbers')}">
+            Numbers
+        </a>
+        <a
+            class="tab"
+            ui-sref="number-types"
+            ng-class="{active: vm.$state.includes('number-types')}">
+            Number Types
+        </a>
+    </div>
+    <!-- <div>
+        <button class="tab">{{::vm.user}}</button>
+        <button
+            class="tab"
+            ng-click="vm.onLogout()">
+            Logout
+        </button>
+    </div> -->
+</div>

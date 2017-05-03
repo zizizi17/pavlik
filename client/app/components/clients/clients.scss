@@ -1,0 +1,27 @@
+.clients {
+    padding-top: 65px;
+    background-color: #fff;
+    .input-phone {
+        padding: 4px 8px;
+        background-color: transparent;
+        border: 1px solid transparent;
+    }
+    .contendEditable {
+        border-radius: 4px;
+        box-shadow: 0;
+        border: 1px solid #ccc;
+    }
+}
+
+.client_controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    span {
+        cursor: pointer;
+    }
+}
+
+.no_results {
+    text-align: center
+}

@@ -1,0 +1,71 @@
+<div class="dialog__header">
+    <h2>Edit Number: {{vm.number.name}}</h2>
+</div>
+<div class="dialog__content">
+    <form novalidate name="editNumber">
+        <div class="form-group required">
+            <label
+                for="name">Name</label>
+            <input
+                type="text"
+                name="name"
+                ng-required="true"
+                ng-model="vm.number.name"
+                class="form-control">
+        </div>
+        <div class="form-group required">
+            <label for="price">Price</label>
+            <input
+                type="text"
+                name="price"
+                ng-required="true"
+                ng-model="vm.number.price"
+                class="form-control">
+        </div>
+        <div class="form-group required">
+            <label for="floor">Floor</label>
+            <input
+                type="text"
+                name="floor"
+                ng-required="true"
+                ng-model="vm.number.floor"
+                class="form-control">
+        </div>
+        <div class="form-group required">
+            <label for="maxResidents">Maximum Residents</label>
+            <input
+                type="text"
+                name="maxResidents"
+                ng-required="true"
+                ng-model="vm.number.maxResidents"
+                class="form-control">
+        </div>
+        <div class="form-group required">
+            <label for="typeSelect">Type</label>
+            <select
+                type="text"
+                name="typeSelect"
+                ng-required="true"
+                class="form-control"
+                ng-model="vm.number.type"
+                ng-options="type.name for type in vm.types">
+                <option value="">Select number type</option>
+            </select>
+        </div>
+    </form>
+</div>
+<div class="dialog__footer">
+    <div class="form-group">
+        <button
+            class="btn btn-primary"
+            ng-click="vm.onSave()"
+            ng-disabled="!editNumber.$valid">
+            Save
+        </button>
+        <button
+            class="btn btn-default"
+            ng-click="vm.onClose()">
+            Cancel
+        </button>
+    </div>
+</div>

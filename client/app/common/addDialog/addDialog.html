@@ -1,0 +1,71 @@
+<div class="dialog__header">
+    <h2>Add New Number</h2>
+</div>
+<div class="dialog__content">
+    <form novalidate name="addNumber">
+        <div class="form-group required">
+            <label
+                for="name">Name</label>
+            <input
+                type="text"
+                name="name"
+                ng-required="true"
+                ng-model="vm.name"
+                class="form-control">
+        </div>
+        <div class="form-group required">
+            <label for="price">Price</label>
+            <input
+                type="text"
+                name="price"
+                ng-required="true"
+                ng-model="vm.price"
+                class="form-control">
+        </div>
+        <div class="form-group required">
+            <label for="floor">Floor</label>
+            <input
+                type="text"
+                name="floor"
+                ng-required="true"
+                ng-model="vm.floor"
+                class="form-control">
+        </div>
+        <div class="form-group required">
+            <label for="maxResidents">Maximum Residents</label>
+            <input
+                type="text"
+                name="maxResidents"
+                ng-required="true"
+                ng-model="vm.maxResidents"
+                class="form-control">
+        </div>
+        <div class="form-group required">
+            <label for="typeSelect">Type</label>
+            <select
+                type="text"
+                name="typeSelect"
+                ng-required="true"
+                class="form-control"
+                ng-model="vm.type"
+                ng-options="type.name for type in vm.types">
+                <option value="">Select number type</option>
+            </select>
+        </div>
+    </form>
+</div>
+<div class="dialog__footer">
+    <div class="form-group">
+        <button
+            class="btn btn-primary"
+            ng-click="vm.onAdd()"
+            ng-disabled="!addNumber.$valid">
+            Add
+        </button>
+        <button
+            class="btn btn-default"
+            ng-click="vm.onClose()">
+            Cancel
+        </button>
+    </div>
+</div>

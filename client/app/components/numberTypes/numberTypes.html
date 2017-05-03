@@ -1,0 +1,57 @@
+<header></header>
+
+<div class="container-fluid clients">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label for="clientByName">Search:</label>
+                <input
+                    type="text"
+                    name="clientByName"
+                    class="form-control"
+                    ng-model="vm.searchQuery"
+                    placeholder="Enter customer's name"
+                    ng-keydown="$event.keyCode === 13 && vm.onSearch()">
+            </div>
+            <div class="form-group">
+                <button
+                    ng-click="vm.onAddType()"
+                    class="btn btn-primary pull-right">Add Type</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1
+                class="no_results"
+                ng-if="!vm.list.data.length">There is no result by your query</h1>
+            <div
+                class="table-responsive"
+                ng-if="vm.list.data.length">
+                <table class="table table-hover">
+                    <thead>
+                        <th>Name</th>
+                        <th>Parameters</th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        <tr
+                            ng-repeat="type in vm.list.data track by $index">
+                            <td>{{type.name}}</td>
+                            <td>{{type.type}}</td>
+                            <td class="">
+                                <div class="client_controls">
+                                    <span
+                                        ng-click="vm.onDelete(type)"
+                                        title="Remove">
+                                        <i class="material-icons">delete_forever</i>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

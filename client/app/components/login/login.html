@@ -1,0 +1,36 @@
+<div class="login">
+    <form
+        novalidate
+        class="login__form"
+        name="login">
+        <div
+            class="form-group required">
+            <label for="name">Enter your name</label>
+            <input
+                type="text"
+                name="name"
+                required
+                ng-model="vm.name"
+                placeholder="Enter your name"
+                class="form-control"
+                min-length="2"
+                required
+                ng-class="{'has-error': login.name.$touched && !login.name.$valid}">
+        </div>
+        <p
+            ng-if="login.name.$touched && !login.name.$valid"
+            class="alert alert-danger">Enter your name!</p>
+        <button
+            type="submit"
+            class="btn btn-default"
+            ng-disabled="vm.name.length <= 2"
+            ng-click="vm.onLogin()">
+            Submit
+        </button>
+        <div
+            class="alert alert-danger error_message"
+            ng-if="vm.error">
+            <strong>Error!</strong> {{::vm.error}}
+        </div>
+    </form>
+</div>

@@ -1,0 +1,125 @@
+<header></header>
+
+<div class="container-fluid clients">
+    <div class="row">
+
+        <div class="form-group">
+            <div class="col-xs-4">
+                <label for="clientByName">Name</label>
+                <input
+                    type="text"
+                    name="clientByName"
+                    class="form-control"
+                    ng-model="vm.nameQuery.name"
+                    placeholder="Enter number's name">
+            </div>
+            <div class="col-xs-4">
+                <label for="startRange">Amount From</label>
+                <input
+                    type="text"
+                    name="startRange"
+                    class="form-control"
+                    ng-model="vm.rangeQuery.from"
+                    placeholder="From">
+            </div>
+            <div class="col-xs-4">
+                <label for="endRange">Amount To</label>
+                <input
+                    type="text"
+                    name="endRange"
+                    class="form-control"
+                    ng-model="vm.rangeQuery.to"
+                    placeholder="To">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-2">
+                <label for="floor">Floor From</label>
+                <input
+                    type="text"
+                    name="clientByName"
+                    class="form-control"
+                    ng-model="vm.floorFrom">
+            </div>
+            <div class="col-xs-2">
+                <label for="floor">Floor To</label>
+                <input
+                    type="text"
+                    name="floorTo"
+                    class="form-control"
+                    ng-model="vm.floorTo">
+            </div>
+            <div class="col-xs-4">
+                <label for="floor">Max Residents</label>
+                <input
+                    type="text"
+                    name="clientByName"
+                    class="form-control"
+                    ng-model="vm.residentsQuery.residents"
+                    placeholder="Enter residents number">
+            </div>
+            <div class="col-xs-4">
+                <label for="">Search</label>
+                <button
+                    class="form-control btn btn-success"
+                    ng-click="vm.onSearch()">Search</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12 mg-t-10">
+                <button
+                    class="btn btn-default"
+                    ng-click="vm.getList()">All</button>
+                <button
+                    class="btn btn-default"
+                    ng-click="vm.onFreeNumbers()">Free</button>
+                <button
+                    class="btn btn-primary pull-right"
+                    ng-click="vm.onAddNumber()">
+                    Add Number
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1
+                class="no_results"
+                ng-if="!vm.list.data.length">There is no result by your query</h1>
+            <div
+                class="table-responsive"
+                ng-if="vm.list.data.length">
+                <table class="table table-hover">
+                    <thead>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Floor</th>
+                        <th>Maximum residents</th>
+                        <th>Type</th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        <tr
+                            ng-repeat="number in vm.list.data track by $index"
+                            uisref="number({id: number.id})">
+                            <td>{{number.name}}</td>
+                            <td>{{number.price | currency}}</td>
+                            <td>{{number.floor}}</td>
+                            <td>{{number.maxResidents}}</td>
+                            <td>{{number.type.name}}</td>
+                            <td class="">
+                                <div class="client_controls">
+                                    <span
+                                        ng-click="vm.onEditNumber(number)">
+                                        <i class="material-icons">mode_edit</i>
+                                    </span>
+                                    <span ng-click="vm.onDelete(number)"><i class="material-icons">delete_forever</i></span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

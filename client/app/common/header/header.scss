@@ -1,0 +1,26 @@
+.navbar {
+    border-radius: 0;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    background-color: rgba(23,233,2, .5);
+    padding: 0 0 0 40px;
+    .tab {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+        margin-right: 14px;
+        font-size: 18px;
+        font-weight: bold;
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+}
+
+.active {
+    color: #fff !important;
+}
