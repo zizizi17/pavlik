@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import {TYPE} from '../types.js';
 
 let _$http = new WeakMap();
 
@@ -11,14 +12,14 @@ export class ClientService {
 
     getAll (query) {
         return _$http.get(this)({
-            url: `https://shielded-coast-32476.herokuapp.com/clients/all/${this._serialize(query)}`,
+            url: `${TYPE.URL}/clients/all/${this._serialize(query)}`,
             method: "GET"
         })
     }
 
     save (client) {
         return _$http.get(this)({
-            url: `https://shielded-coast-32476.herokuapp.com/clients`,
+            url: `${TYPE.URL}/clients`,
             method: "PUT",
             data: client
         })
@@ -26,7 +27,7 @@ export class ClientService {
 
     create (client) {
         return _$http.get(this)({
-            url: `https://shielded-coast-32476.herokuapp.com/clients`,
+            url: `${TYPE.URL}/clients`,
             method: "POST",
             data: client
         })
@@ -34,7 +35,7 @@ export class ClientService {
 
     delete (id) {
         return _$http.get(this)({
-            url: `https://shielded-coast-32476.herokuapp.com/clients/${id}`,
+            url: `${TYPE.URL}/clients/${id}`,
             method: "DELETE"
         })
     }

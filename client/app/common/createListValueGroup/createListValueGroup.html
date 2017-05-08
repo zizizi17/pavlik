@@ -1,0 +1,48 @@
+<div class="dialog__header">
+    <h2>Add New Parameter</h2>
+</div>
+<div class="dialog__content">
+    <form novalidate name="addListValueGroup">
+        <div class="form-group required">
+            <label
+                for="name">Name</label>
+            <input
+                type="text"
+                name="name"
+                ng-required="true"
+                ng-model="vm.name"
+                class="form-control">
+        </div>
+        <div class="form-group required" ng-repeat="t in vm.values track by $index">
+            <label
+                for="value">Value</label>
+            <input
+                type="text"
+                name="value"
+                ng-required="true"
+                ng-model="t.value"
+                class="form-control">
+        </div>
+        <div class="form-group">
+            <button
+                type="button"
+                class="form-control btn btn-success text-center"
+                ng-click="vm.addValue()">+</button>
+        </div>
+    </form>
+</div>
+<div class="dialog__footer">
+    <div class="form-group">
+        <button
+            class="btn btn-primary"
+            ng-click="vm.onAddGroup()"
+            ng-disabled="!addListValueGroup.$valid">
+            Add
+        </button>
+        <button
+            class="btn btn-default"
+            ng-click="vm.onClose()">
+            Cancel
+        </button>
+    </div>
+</div>

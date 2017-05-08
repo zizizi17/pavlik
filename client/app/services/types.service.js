@@ -1,3 +1,5 @@
+import {TYPE} from '../types.js';
+
 let _$http = new WeakMap();
 
 export class NumberTypesService {
@@ -9,21 +11,21 @@ export class NumberTypesService {
 
     getAll () {
         return _$http.get(this)({
-            url: `https://shielded-coast-32476.herokuapp.com/number-types/all`,
+            url: `${TYPE.URL}/number-types/all`,
             method: "GET"
         })
     }
 
     delete (id) {
         return _$http.get(this)({
-            url: `https://shielded-coast-32476.herokuapp.com/number-types/${id}`,
+            url: `${TYPE.URL}/number-types/${id}`,
             method: "DELETE"
         })
     }
 
     create (type) {
         return _$http.get(this)({
-            url: `https://shielded-coast-32476.herokuapp.com/number-types`,
+            url: `${TYPE.URL}/number-types`,
             method: "POST",
             data: type
         })
@@ -31,7 +33,7 @@ export class NumberTypesService {
 
     getParameters () {
         return _$http.get(this)({
-            url: `https://shielded-coast-32476.herokuapp.com/parameters/all`,
+            url: `${TYPE.URL}/parameters/all`,
             method: "GET"
         })
     }

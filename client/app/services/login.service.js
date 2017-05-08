@@ -1,3 +1,5 @@
+import {TYPE} from '../types.js';
+
 let _$http = new WeakMap();
 
 export class LoginService {
@@ -13,7 +15,7 @@ export class LoginService {
             password
         }
         return _$http.get(this)({
-            url: `https://shielded-coast-32476.herokuapp.com/login`,
+            url: `${TYPE.URL}/login`,
             method: "POST",
             data
         })
@@ -21,7 +23,7 @@ export class LoginService {
 
     logout () {
         return _$http.get(this)({
-            url: `https://shielded-coast-32476.herokuapp.com/logout`,
+            url: `${TYPE.URL}/logout`,
             method: "POST",
         })
     }

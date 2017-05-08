@@ -1,0 +1,75 @@
+<div class="dialog__header">
+    <h2>Add New Parameter</h2>
+</div>
+<div class="dialog__content">
+    <form novalidate name="addNumber">
+        <div class="form-group required">
+            <label for="parameterType">Type</label>
+            <select
+                type="text"
+                name="typeSelect"
+                ng-required="true"
+                class="form-control"
+                ng-model="vm.type"
+                ng-options="type.name for type in vm.types">
+                <option value="">Select parameter type</option>
+            </select>
+        </div>
+
+        <div class="form-group required">
+            <label
+                for="name">Name</label>
+            <input
+                type="text"
+                name="name"
+                ng-required="true"
+                ng-model="vm.name"
+                class="form-control">
+        </div>
+        <div class="form-group required" ng-if="vm.type.value === 'INT'">
+            <label
+                for="min">Min Value</label>
+            <input
+                type="text"
+                name="min"
+                ng-required="true"
+                ng-model="vm.intRange.min"
+                class="form-control">
+            <label for="max">Max Value</label>
+            <input
+                type="text"
+                name="max"
+                ng-required="true"
+                ng-model="vm.intRange.max"
+                class="form-control">
+        </div>
+        <div class="form-group required" ng-if="vm.type.value === 'LIST_VALUE'">
+            <label
+                for="min">List Value Group</label>
+            <select
+                type="text"
+                name="listGroupSelect"
+                ng-required="true"
+                class="form-control"
+                ng-model="vm.listValueGroup"
+                ng-options="group.name for group in vm.groups">
+                <option value="">Select group</option>
+            </select>
+        </div>
+    </form>
+</div>
+<div class="dialog__footer">
+    <div class="form-group">
+        <button
+            class="btn btn-primary"
+            ng-click="vm.onAdd()"
+            ng-disabled="!addNumber.$valid">
+            Add
+        </button>
+        <button
+            class="btn btn-default"
+            ng-click="vm.onClose()">
+            Cancel
+        </button>
+    </div>
+</div>

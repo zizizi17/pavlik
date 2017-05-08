@@ -1,3 +1,4 @@
+import {TYPE} from '../types.js';
 import * as _ from 'lodash';
 
 let _$http = new WeakMap();
@@ -11,28 +12,28 @@ export class NumbersService {
 
     getAll (query) {
         return _$http.get(this)({
-            url: `https://shielded-coast-32476.herokuapp.com/numbers/all/${this._serialize(query)}`,
+            url: `${TYPE.URL}/numbers/all/${this._serialize(query)}`,
             method: "GET"
         })
     }
 
     getFree () {
         return _$http.get(this)({
-            url: `https://shielded-coast-32476.herokuapp.com/numbers/free`,
+            url: `${TYPE.URL}/numbers/free`,
             method: "GET"
         })
     }
 
     getTypes () {
         return _$http.get(this)({
-            url: `https://shielded-coast-32476.herokuapp.com/number-types/all`,
+            url: `${TYPE.URL}/number-types/all`,
             method: "GET"
         })
     }
 
     create (number) {
         return _$http.get(this)({
-            url: `https://shielded-coast-32476.herokuapp.com/numbers`,
+            url: `${TYPE.URL}/numbers`,
             method: "POST",
             data: number
         })
@@ -40,14 +41,14 @@ export class NumbersService {
 
     delete (number) {
         return _$http.get(this)({
-            url: `https://shielded-coast-32476.herokuapp.com/numbers/${number.id}`,
+            url: `${TYPE.URL}/numbers/${number.id}`,
             method: "DELETE"
         })
     }
 
     search (query) {
         return _$http.get(this)({
-            url: `http://shielded-coast-32476.herokuapp.com/numbers/search`,
+            url: `${TYPE.URL}/numbers/search`,
             method: "POST",
             data: query
         })
@@ -55,9 +56,46 @@ export class NumbersService {
 
     update (number) {
         return _$http.get(this)({
-            url: `https://shielded-coast-32476.herokuapp.com/numbers`,
+            url: `${TYPE.URL}/numbers`,
             method: "PUT",
             data: number
+        })
+    }
+
+    getParameters () {
+        return _$http.get(this)({
+            url: `${TYPE.URL}/parameters/all`,
+            method: "GET"
+        })
+    }
+
+    createParameter (data) {
+        return _$http.get(this)({
+            url: `${TYPE.URL}/parameters`,
+            method: "POST",
+            data
+        })
+    }
+
+    deleteParameter (param) {
+        return _$http.get(this)({
+            url: `${TYPE.URL}/parameters/${param.id}`,
+            method: "DELETE"
+        })
+    }
+
+    createListValueGroup (data) {
+        return _$http.get(this)({
+            url: `${TYPE.URL}/list-values`,
+            method: 'POST',
+            data
+        })
+    }
+
+    getListValues () {
+        return _$http.get(this)({
+            url: `${TYPE.URL}/list-values/all`,
+            method: 'GET'
         })
     }
 

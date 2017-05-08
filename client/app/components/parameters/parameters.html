@@ -3,10 +3,17 @@
 <div class="container-fluid clients">
     <div class="row">
         <div class="col-xs-12">
-            <div class="form-group">
+            <div class="btn-group pull-right">
                 <button
-                    ng-click="vm.onAddType()"
-                    class="btn btn-primary pull-right">Add Type</button>
+                    ng-click="vm.onAddListGroup()"
+                    class="btn btn-primary">
+                    Add List Value Group
+                </button>
+                <button
+                    ng-click="vm.onAddParameter()"
+                    class="btn btn-primary">
+                    Add Parameter
+                </button>
             </div>
         </div>
     </div>
@@ -26,13 +33,13 @@
                     </thead>
                     <tbody>
                         <tr
-                            ng-repeat="type in vm.list.data track by $index">
-                            <td>{{type.name}}</td>
-                            <td>{{type.type}}</td>
+                            ng-repeat="param in vm.list.data track by $index">
+                            <td>{{param.name}}</td>
+                            <td>{{param.type}}</td>
                             <td class="">
                                 <div class="client_controls">
                                     <span
-                                        ng-click="vm.onDelete(type)"
+                                        ng-click="vm.onDelete(param)"
                                         title="Remove">
                                         <i class="material-icons">delete_forever</i>
                                     </span>

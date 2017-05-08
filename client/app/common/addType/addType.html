@@ -13,16 +13,58 @@
                 ng-model="vm.name"
                 class="form-control">
         </div>
+        <div class="form-group required" ng-repeat="param in vm.parameters track by $index">
+            <label for="val">{{param.name}}</label>
+            <input
+                type="text"
+                name="val"
+                class="form-control"
+                ng-model="param[param.key]">
+        </div>
         <div class="form-group required">
             <label for="type">Type</label>
             <select
                 type="text"
                 name="type"
                 ng-model="vm.parameter"
-                ng-options="param as param.name for param in vm.parameters"
-                class="form-control">
+                ng-options="param as param.name for param in vm.parameterss"
+                class="form-control"
+                ng-change="vm.onSelect()">
                 <option value="">Select parameter</option>
             </select>
+        </div>
+        <div class="form-group required" ng-if="vm.key === 'textValue' || vm.key === 'intValue'">
+            <label for="val">Value</label>
+            <input
+                type="text"
+                name="val"
+                class="form-control"
+                ng-model="vm.parameter[vm.key]">
+        </div>
+
+        <div class="form-group required" ng-if="vm.key === 'dateValue'">
+            <label for="val">Value</label>
+            <input
+                type="date"
+                name="val"
+                class="form-control"
+                ng-model="vm.parameter[vm.key]">
+        </div>
+
+        <div class="form-group required" ng-if="vm.key === 'listValue'">
+            <label for="val">Value</label>
+            <select
+                ng-options="listValueItem as listValueItem.value for listValueItem in vm.parameter.listValueGroup.values"
+                type="text"
+                name="val"
+                class="form-control"
+                ng-model="vm.parameter[vm.key]">
+                <option value="">Select option</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button class="form-control btn btn-success text-center" ng-click="vm.onAddParam()">+</button>
         </div>
     </form>
 </div>
