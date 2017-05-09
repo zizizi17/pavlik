@@ -15,12 +15,14 @@
         <a
             class="tab"
             ui-sref="number-types"
+            ng-if='vm.admin'
             ng-class="{active: vm.$state.includes('number-types')}">
             Number Types
         </a>
         <a
             class="tab"
             ui-sref="parameters"
+            ng-if='vm.admin'
             ng-class="{active: vm.$state.includes('parameters')}">
             Parameters
         </a>

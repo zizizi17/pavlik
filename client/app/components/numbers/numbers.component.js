@@ -5,6 +5,7 @@ export const numbersComponent = {
   controller: NumbersController,
   controllerAs: 'vm',
   bindings: {
-      list: '<'
+      list: '<',
+      parameterss: '<'
   }
 };

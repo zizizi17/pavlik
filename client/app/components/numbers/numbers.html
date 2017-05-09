@@ -58,13 +58,152 @@
                     ng-model="vm.residentsQuery.residents"
                     placeholder="Enter residents number">
             </div>
-            <div class="col-xs-4">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label for="parameter">Select parameter</label>
+                <select
+                    name="parameter"
+                    ng-model="vm.parameter"
+                    class="form-control"
+                    ng-change="vm.onSelect()"
+                    ng-options="param as param.name for param in vm.parameterss.data">
+                    <option value="">Select Parameters</option>
+                </select>
+                <div class="form-group required" ng-if="vm.key === 'textValue'">
+                    <label for="val">Value</label>
+                    <input
+                        type="text"
+                        name="val"
+                        class="form-control"
+                        ng-model="vm.parameter[vm.key]">
+                </div>
+
+                <div class="form-group required" ng-if="vm.key === 'dateValue'">
+                    <label for="val">From</label>
+                    <input
+                        type="date"
+                        name="val"
+                        class="form-control"
+                        ng-model="vm.parameter[vm.key + 'From']">
+                </div>
+                <div class="form-group required" ng-if="vm.key === 'dateValue'">
+                    <label for="val">To</label>
+                    <input
+                        type="date"
+                        name="val"
+                        class="form-control"
+                        ng-model="vm.parameter[vm.key + 'To']">
+                </div>
+
+                <div class="form-group required" ng-if="vm.key === 'intValue'">
+                    <label for="val">From</label>
+                    <input
+                        type="text"
+                        name="val"
+                        class="form-control"
+                        ng-model="vm.parameter[vm.key + 'From']">
+                </div>
+                <div class="form-group required" ng-if="vm.key === 'intValue'">
+                    <label for="val">To</label>
+                    <input
+                        type="text"
+                        name="val"
+                        class="form-control"
+                        ng-model="vm.parameter[vm.key + 'To']">
+                </div>
+
+
+                <div class="form-group required" ng-if="vm.key === 'listValue'">
+                    <label for="val">Value</label>
+                    <select
+                        ng-options="listValueItem as listValueItem.value for listValueItem in vm.parameter.listValueGroup.values"
+                        type="text"
+                        name="val"
+                        class="form-control"
+                        ng-model="vm.parameter[vm.key]">
+                        <option value="">Select option</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <div class="">
+                    <label for="add">Add Param</label>
+                    <button
+                        class="btn text-center btn-primary form-control"
+                        ng-click="vm.onAddParam()">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group">
                 <label for="">Search</label>
                 <button
                     class="form-control btn btn-success"
                     ng-click="vm.onSearch()">Search</button>
             </div>
         </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-xs-12" ng-repeat="param in vm.paramList track by $index">
+            <label for="val">{{param.name}}</label>
+            <input
+                ng-if="param['dateValueFrom']"
+                type="text"
+                name="val"
+                ng-disabled='true'
+                class="form-control col-xs-5"
+                ng-model-options="{getterSetter: true}"
+                ng-model="::param[param.key + 'From'] | date: 'medium'">
+            <input
+                ng-if="param['dateValueTo']"
+                type="text"
+                name="val"
+                ng-disabled='true'
+                ng-model-options="{getterSetter: true}"
+                class="form-control col-xs-5"
+                ng-model="::param[param.key + 'To'] | date: 'medium'">
+            <input
+                ng-if="param['intValueFrom']"
+                type="text"
+                name="val"
+                ng-disabled='true'
+                class="form-control col-xs-5"
+                ng-model-options="{getterSetter: true}"
+                ng-model="::param[param.key + 'From']">
+            <input
+                ng-if="param['intValueTo']"
+                type="text"
+                name="val"
+                ng-disabled='true'
+                ng-model-options="{getterSetter: true}"
+                class="form-control col-xs-5"
+                ng-model="::param[param.key + 'To']">
+            <input
+                ng-if="param[param.key].name"
+                type="text"
+                name="val"
+                ng-disabled='true'
+                class="form-control"
+                ng-model="param[param.key].name">
+            <input
+                ng-if="!param[param.key].name && (!(+param['dateValueFrom']) || !(+param['dateValueFrom'])) && (!param.intValueFrom || !param.intValueTo)"
+                type="text"
+                name="val"
+                ng-disabled='true'
+                class="form-control"
+                ng-model="param[param.key]">
+
+        </div>
+    </div>
+
+    <div class="row">
         <div class="form-group">
             <div class="col-xs-12 mg-t-10">
                 <button

@@ -14,11 +14,15 @@ let numbersModule = angular.module('numbers', [
       url: '/numbers',
       component: 'numbers',
       bindings: {
-          list: 'list'
+          list: 'list',
+          parameterss: 'parameterss'
       },
       resolve: {
           list: function (NumbersService) {
               return NumbersService.getAll();
+          },
+          parameterss: function(NumbersService) {
+              return NumbersService.getParameters();
           }
       }
     });

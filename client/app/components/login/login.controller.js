@@ -18,12 +18,15 @@ export class LoginController {
   }
 
   onLogin () {
-    //   _LoginService.get(this)
-        // .login(this.name)
-        // .then((res) => {
-        _$state.get(this).go('numbers')
-            // _$rootScope.get(this).user = res.data.name;
-        // })
-        // .catch((err) => console.error(err));
+      _LoginService.get(this)
+        .login({
+            login: this.login,
+            password: this.password
+        })
+        .then((res) => {
+            window.localStorage.setItem('role', res.data.role);
+            _$state.get(this).go('numbers')
+        })
+        .catch((err) => console.error(err));
   }
 }

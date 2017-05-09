@@ -14,6 +14,8 @@ export class NumbersController {
         _NumbersService.set(this, NumbersService);
         _ngDialog.set(this, ngDialog);
         _$rootScope.set(this, $rootScope);
+
+        this.admin = window.localStorage.getItem('role') === 'admin';
     }
 
     $onInit () {
@@ -36,6 +38,8 @@ export class NumbersController {
             qualifier: 'residents',
             residents: 0
         };
+
+        this.parameters = [];
     }
 
     onSearch () {
@@ -48,13 +52,21 @@ export class NumbersController {
         } else if (this.floorTo) {
             this.floorQuery.floors.push(this.floorTo);
         }
-
-        const query = [
+        this.parameters.map((param) => {
+            delete param.name;
+            delete param.key;
+            if(param.listValue) {
+                delete param.listValue.name;
+            }
+        })
+        let query = [
             this.nameQuery,
             this.rangeQuery,
             this.floorQuery,
             this.residentsQuery
         ]
+        query  = query.concat(this.parameters);
+        console.log(query);
 
         _NumbersService.get(this).search(query)
             .then((res) => this.list = res)
@@ -123,5 +135,46 @@ export class NumbersController {
             })
             .then(() => this.getList())
             .catch(() => this.getList())
+    }
+
+
+    // params
+    onAddParam () {
+        let obj = {};
+        obj.qualifier = "parameter";
+        obj.parameter = {
+            id: this.parameter.id,
+            type: this.parameter.type
+        };
+        if(this.parameter.type === 'INT') {
+            obj[this.key + 'From'] = +this.parameter.intValueFrom;
+            obj[this.key + 'To'] = +this.parameter.intValueTo;
+        } else if (this.parameter.type === 'LIST_VALUE') {
+            obj[this.key] = {
+                id: this.parameter[this.key].id,
+                name: this.parameter[this.key].value
+            }
+        } else if (this.parameter.type === "DATE") {
+            obj[this.key + 'From'] = this.parameter.dateValueFrom;
+            obj[this.key + 'To'] = this.parameter.dateValueTo;
+        } else {
+            obj[this.key] = this.parameter[this.key];
+        }
+        obj.key = this.key;
+        obj.name = this.parameter.name;
+        this.parameters.push(obj);
+        this.paramList = angular.copy(this.parameters);
+        this.key = null;
+        this.parameterss.data.splice(this.parameterss.data.indexOf(this.parameter), 1);
+        this.parameter = null;
+        console.log(this.paramList)
+    }
+
+    onSelect () {
+        if(this.parameter.type === "LIST_VALUE") {
+            this.key = 'listValue';
+        } else {
+            this.key = `${this.parameter.type.toLowerCase()}Value`;
+        }
     }
 }

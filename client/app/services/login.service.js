@@ -9,15 +9,10 @@ export class LoginService {
         _$http.set(this, $http);
     }
 
-    login (name, password = '') {
-        let data = {
-            name,
-            password
-        }
+    login (data) {
         return _$http.get(this)({
-            url: `${TYPE.URL}/login`,
-            method: "POST",
-            data
+            url: `${TYPE.URL}/login${this._serialize(data)}`,
+            method: "GET"
         })
     }
 
@@ -26,5 +21,17 @@ export class LoginService {
             url: `${TYPE.URL}/logout`,
             method: "POST",
         })
+    }
+
+    _serialize (obj) {
+        if (!_.isObject(obj) || _.isEmpty(obj)) {
+            return '';
+        }
+
+        return '?' + Object.keys(obj)
+            .reduce((a, k) => {
+                a.push(k + '=' + encodeURIComponent(obj[k]));
+                return a;
+            }, []).join('&');
     }
 }

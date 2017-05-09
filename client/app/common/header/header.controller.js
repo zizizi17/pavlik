@@ -12,6 +12,7 @@ export class HeaderController {
 
       this.user = _$rootScope.get(this).user;
       this.$state = $state;
+      this.admin = window.localStorage.getItem('role') === 'admin';
   }
 
   $onInit () {
