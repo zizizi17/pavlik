@@ -35,7 +35,18 @@
                         <tr
                             ng-repeat="param in vm.list.data track by $index">
                             <td>{{param.name}}</td>
-                            <td>{{param.type}}</td>
+                            <td ng-if="param.type != 'INT' && param.type != 'LIST_VALUE'">{{param.type}}</td>
+                            <td ng-if="param.type == 'INT'">From {{param.intValueRange.min}} to {{param.intValueRange.max}}</td>
+                            <td ng-if="param.type == 'LIST_VALUE'">
+                                <select
+                                    name=""
+                                    ng-options="parameter as parameter.value for parameter in param.listValueGroup.values"
+                                    ng-readonly="true"
+                                    ng-model="vm.test"
+                                    class="form-control">
+                                    <option value="">List of possible values</option>
+                                </select>
+                            </td>
                             <td class="">
                                 <div class="client_controls">
                                     <span
