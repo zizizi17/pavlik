@@ -6,6 +6,7 @@ import EditClient from './editClientDialog/editClientDialog';
 import AddType from './addType/addType';
 import AddParameterDialog from './addParameterDialog/addParameterDialog';
 import CreateListValueGroup from './createListValueGroup/createListValueGroup';
+import AssignNumber from './assignNumber/assignNumber';
 
 let commonModule = angular.module('app.common', [
   Header,
@@ -14,7 +15,8 @@ let commonModule = angular.module('app.common', [
   EditClient,
   AddType,
   AddParameterDialog,
-  CreateListValueGroup
+  CreateListValueGroup,
+  AssignNumber
 ])
 
 .name;

@@ -40,6 +40,14 @@ export class ClientService {
         })
     }
 
+    assign (data) {
+        return _$http.get(this)({
+            url: `${TYPE.URL}/clients/assign`,
+            method: "POST",
+            data
+        })
+    }
+
     _serialize (obj) {
         if (!_.isObject(obj) || _.isEmpty(obj)) {
             return '';

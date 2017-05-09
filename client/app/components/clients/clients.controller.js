@@ -4,6 +4,7 @@ let _ClientService = new WeakMap(),
 
 import {AddClientDialogController} from '../../common/addClientDialog/addClientDialog.controller';
 import {EditClientDialogController} from '../../common/editClientDialog/editClientDialog.controller';
+import {AssignNumberController} from '../../common/assignNumber/assignNumber.controller';
 
 export class ClientsController {
   constructor(ClientService, $scope, ngDialog) {
@@ -13,7 +14,8 @@ export class ClientsController {
       _$scope.set(this, $scope);
       _ngDialog.set(this, ngDialog);
 
-      this.isReadonly = true;
+      this.isReadonly = true
+      this.admin = window.localStorage.getItem('role') === 'admin';
   }
 
   $onInit () {
@@ -34,6 +36,19 @@ export class ClientsController {
       .catch(() => this.getList());
   }
 
+  onAssign (client) {
+      _ngDialog.get(this).openConfirm({
+          template: '/app/common/assignNumber/assignNumber.html',
+          controller: AssignNumberController,
+          controllerAs: 'vm',
+          data: {
+              client
+          }
+      })
+      .then(() => this.getList())
+      .catch(() => this.getList());
+  }
+
   onDelete (client) {
       _$scope.get(this).$emit('loading', true);
       _ClientService.get(this).delete(client.id)
@@ -45,7 +60,6 @@ export class ClientsController {
   }
 
   getList () {
-      //TODO add sort at getList()
       _ClientService.get(this).getAll()
         .then((res) => this.list = res)
         .catch((err) => console.error(err));

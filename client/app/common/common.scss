@@ -18,3 +18,13 @@ body {
    // scales 1rem to equal 10px.
    font: 62.5% 'Roboto', sans-serif;
 }
+
+
+.list-item {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.free-numbers__list {
+    padding: 0;
+}

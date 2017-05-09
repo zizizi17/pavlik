@@ -49,7 +49,9 @@
                             </td>
                             <td class="">
                                 <div class="client_controls">
-                                    <span title="Assign">
+                                    <span
+                                        ng-click="vm.onAssign(client)" 
+                                        title="Assign">
                                         <i class="material-icons">book</i>
                                     </span>
                                     <span
@@ -58,11 +60,13 @@
                                     </span>
                                     <span
                                         title="Edit"
+                                        ng-if="vm.admin"
                                         ng-click="vm.onEdit(client)">
                                         <i class="material-icons">mode_edit</i>
                                     </span>
                                     <span
                                         ng-click="vm.onDelete(client)"
+                                        ng-if="vm.admin"
                                         title="Remove">
                                         <i class="material-icons">delete_forever</i>
                                     </span>

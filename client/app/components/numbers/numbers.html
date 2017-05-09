@@ -213,6 +213,7 @@
                     class="btn btn-default"
                     ng-click="vm.onFreeNumbers()">Free</button>
                 <button
+                    ng-if="vm.admin"
                     class="btn btn-primary pull-right"
                     ng-click="vm.onAddNumber()">
                     Add Number
@@ -247,7 +248,7 @@
                             <td>{{number.maxResidents}}</td>
                             <td>{{number.type.name}}</td>
                             <td class="">
-                                <div class="client_controls">
+                                <div class="client_controls" ng-if="vm.admin">
                                     <span
                                         ng-click="vm.onEditNumber(number)">
                                         <i class="material-icons">mode_edit</i>
