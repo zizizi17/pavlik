@@ -22,6 +22,9 @@ export class AddTypeController {
         data.parameters.map((param) => {
             delete param.name;
             delete param.key;
+            if(param.listValue) {
+                delete param.listValue.value;
+            }
         })
         _NumberTypesService.get(this).create(data)
             .then(() => {
@@ -29,7 +32,6 @@ export class AddTypeController {
                 _$scope.get(this).closeThisDialog();
             })
             .catch((err) => console.error(err));
-        console.log(data);
     }
 
     onAddParam (index) {
@@ -37,19 +39,23 @@ export class AddTypeController {
         obj.parameter = {
             id: this.parameter.id
         };
-        if(this.parameter.type === 'INT' || this.parameter.type === 'DATE') {
+        if(this.parameter.type === 'INT') {
             obj[this.key] = +this.parameter[this.key];
         } else if (this.parameter.type === 'LIST_VALUE') {
-            obj[this.key] = this.parameter[this.key].id;
+            obj[this.key] = {
+                id: this.parameter[this.key].id,
+                name: this.parameter[this.key].value
+            }
         } else {
             obj[this.key] = this.parameter[this.key];
         }
         obj.key = this.key;
         obj.name = this.parameter.name;
         this.parameters.push(obj);
+        this.paramList = angular.copy(this.parameters);
         this.key = null;
         this.parameterss.splice(this.parameterss.indexOf(this.parameter), 1);
-        this.parameter = this.parameterss[0];
+        this.parameter = null;
     }
 
     onClose () {

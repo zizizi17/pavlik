@@ -13,13 +13,30 @@
                 ng-model="vm.name"
                 class="form-control">
         </div>
-        <div class="form-group required" ng-repeat="param in vm.parameters track by $index">
+        <div class="form-group required" ng-repeat="param in vm.paramList track by $index">
             <label for="val">{{param.name}}</label>
             <input
+                ng-if="!param[param.key] || !param[param.key].name"
                 type="text"
                 name="val"
+                ng-disabled='true'
                 class="form-control"
                 ng-model="param[param.key]">
+            <input
+                ng-if="param[param.key].dateValue"
+                type="text"
+                name="val"
+                ng-disabled='true'
+                class="form-control"
+                ng-model="param[param.key] | date: 'medium'">
+            <input
+                ng-if="param[param.key].name"
+                type="text"
+                name="val"
+                ng-disabled='true'
+                class="form-control"
+                ng-model="param[param.key].name">
+
         </div>
         <div class="form-group required">
             <label for="type">Type</label>
