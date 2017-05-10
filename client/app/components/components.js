@@ -5,6 +5,7 @@ import Clients from './clients/clients';
 import NumberTypes from './numberTypes/numberTypes';
 import Parameters from './parameters/parameters';
 import Report from './clientsReport/clientsReport';
+import NumberReport from './numbersReport/numbersReport';
 
 let componentModule = angular.module('app.components', [
   Numbers,
@@ -12,7 +13,8 @@ let componentModule = angular.module('app.components', [
   Clients,
   NumberTypes,
   Parameters,
-  Report
+  Report,
+  NumberReport
 ])
 
 .name;

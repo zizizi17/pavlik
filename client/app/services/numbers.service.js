@@ -62,6 +62,12 @@ export class NumbersService {
         })
     }
 
+    report () {
+        return _$http.get(this)({
+            url: `${TYPE.URL}/report/numbers`
+        })
+    }
+
     getParameters () {
         return _$http.get(this)({
             url: `${TYPE.URL}/parameters/all`,

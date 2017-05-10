@@ -32,8 +32,17 @@
             ng-if="vm.admin"
             ng-class="{active: vm.$state.includes('report')}"
             class="tab"
+            target="_blank"
             ui-sref="report">
             Clients Report
+        </a>
+        <a
+            ng-if="vm.admin"
+            ng-class="{active: vm.$state.includes('number-report')}"
+            class="tab"
+            target="_blank"
+            ui-sref="number-report">
+            Numbers Report
         </a>
     </div>
     <div class="logout">

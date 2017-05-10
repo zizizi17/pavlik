@@ -1,0 +1,29 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <div
+                class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        <th class="text-center">Floor</th>
+                        <th class="text-center">Max Residents</th>
+                        <th>Last Rented</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="number in vm.data.data track by $index">
+                            <td>{{number.name}}</td>
+                            <td>{{number.type}}</td>
+                            <td>{{number.price}}</td>
+                            <td class="text-center">{{number.floor}}</td>
+                            <td class="text-center">{{number.maxResidents}}</td>
+                            <td>{{number.lastRented | date: 'longDate'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

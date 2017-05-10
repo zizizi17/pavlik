@@ -77,7 +77,7 @@ export class NumbersController {
         _$scope.get(this).$emit('loading', true);
         _NumbersService.get(this).getFree()
             .then((res) => {
-                this.list = res.data;
+                this.list = res;
                 _$scope.get(this).$emit('loading', false);
             })
             .catch((err) => console.error(err));
