@@ -24,6 +24,10 @@ export class LoginController {
             password: this.password
         })
         .then((res) => {
+            if (res.data.role == 'none') {
+                this.error = 'There is no such role in the system. Try again or contact your local Administrator!';
+                return false;
+            }
             window.localStorage.setItem('role', res.data.role);
             _$state.get(this).go('numbers')
         })

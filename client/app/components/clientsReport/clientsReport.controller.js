@@ -5,7 +5,6 @@ class ClientsReportController {
         'ngInject';
 
         _$scope.set(this, $scope);
-        console.log(this);
     }
 
     $onInit () {
