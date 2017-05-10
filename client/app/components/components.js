@@ -4,13 +4,15 @@ import Login from './login/login';
 import Clients from './clients/clients';
 import NumberTypes from './numberTypes/numberTypes';
 import Parameters from './parameters/parameters';
+import Report from './clientsReport/clientsReport';
 
 let componentModule = angular.module('app.components', [
   Numbers,
   Login,
   Clients,
   NumberTypes,
-  Parameters
+  Parameters,
+  Report
 ])
 
 .name;

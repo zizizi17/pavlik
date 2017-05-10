@@ -15,14 +15,7 @@ export class HeaderController {
       this.admin = window.localStorage.getItem('role') === 'admin';
   }
 
-  $onInit () {
-  }
-
   onLogout () {
-      _LoginService.get(this).logout()
-        .then((res) => {
-            _$rootScope.get(this).user = null;
-            _$state.get(this).go('login');
-        });
+    _$state.get(this).go('login');
   }
 }

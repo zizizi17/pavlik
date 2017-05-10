@@ -48,6 +48,13 @@ export class ClientService {
         })
     }
 
+    report () {
+        return _$http.get(this)({
+            url: `${TYPE.URL}/report/clients`,
+            method: "GET"
+        })
+    }
+
     _serialize (obj) {
         if (!_.isObject(obj) || _.isEmpty(obj)) {
             return '';

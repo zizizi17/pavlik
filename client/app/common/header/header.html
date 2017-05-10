@@ -1,4 +1,6 @@
-<div class="navbar">
+<div
+    class="navbar"
+    ng-class="{'admin--bg': vm.admin, 'user--bg': !vm.admin}">
     <div>
         <a
             class="tab"
@@ -26,13 +28,19 @@
             ng-class="{active: vm.$state.includes('parameters')}">
             Parameters
         </a>
-    </div>
-    <!-- <div>
-        <button class="tab">{{::vm.user}}</button>
-        <button
+        <a
+            ng-if="vm.admin"
+            ng-class="{active: vm.$state.includes('report')}"
             class="tab"
+            ui-sref="report">
+            Clients Report
+        </a>
+    </div>
+    <div class="logout">
+        <button
+            class="tab btn btn-default"
             ng-click="vm.onLogout()">
             Logout
         </button>
-    </div> -->
+    </div>
 </div>

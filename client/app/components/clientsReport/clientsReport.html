@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <div
+                class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <th>Name</th>
+                        <th class="text-center">Visits count</th>
+                        <th>History</th>
+                        <th class="text-center">Total Days</th>
+                        <th>Is Now Staying</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="client in vm.data.data track by $index">
+                            <td>{{client.clientsName}}</td>
+                            <td class="text-center">{{client.visitsNumber}}</td>
+                            <td>{{client.numbers}}</td>
+                            <td class="text-center">{{client.totalDays}}</td>
+                            <td class="text-capitalize">{{client.isNowStaying}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
